@@ -52,3 +52,17 @@ h1{
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+table th, td, tr{
+    text-align: center;
+    font-size: 30px;
+    border: 1px solid black;
+    width: 200px;
+    height: 100px;
+}
+
+select{
+    align-items: center;
+    width: 100px;
+    height: 30px;
+}

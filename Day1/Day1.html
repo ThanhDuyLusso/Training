@@ -50,8 +50,35 @@
     <script>
         document.getElementById("testScript").innerHTML = "Javascript";
     </script>
-    <button type="button" onclick="testFunction()" style="margin-left: 560px;">Function from external file</button>
+    <button type="button" onclick="testFunction()" style="margin-left: 590px;">Function from external file</button>
     <script src="script.js"></script>
+
+    <br>
+    <br>
+    <hr>
+
+
+    <form>
+
+        <label>Graphic Card</label>
+        <select id="graphicCard">
+            <option value="nvidia">NVIDIA</option>
+            <option value="amd">AMD</option>
+        </select>
+
+        <script>
+            if (id = "nvidia") {
+                document.getElementById("testOption").innerHTML = "Nvidia"
+            }
+        </script>
+        <br>
+        <br>
+        <label>GPU series</label>
+        <select id="nvidiaseries">
+            <option>GTX 750ti</option>
+        </select>
+    </form>
+
 </body>
 
 </html>
