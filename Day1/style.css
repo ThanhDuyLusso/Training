@@ -1,0 +1,45 @@
+h1{
+    color: blue;
+    text-align: center;
+}
+
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(webfont.woff2) format(woff2)
+}
+
+.testFont {
+    font-family: myFirstFont, Impact, Haettenschweiler, 'Arial Narrow Bold';
+}
+
+.flex-Container{
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: blue;
+    
+}
+
+.flex-Container > div{
+    background-color: white;
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+}
+
+.backgroundImage {
+    z-index: -1;
+}
+
+.floatImage {
+    width: 150px;
+    height: 150px;
+    float: right;
+}
+.overflowDiv{
+    width: 110px;
+    height: 250px;
+    overflow:scroll;
+}
