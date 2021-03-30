@@ -50,34 +50,46 @@
     <script>
         document.getElementById("testScript").innerHTML = "Javascript";
     </script>
-    <button type="button" onclick="testFunction()" style="margin-left: 590px;">Function from external file</button>
+    <button type="button" onclick="testFunction()" style="margin-left: 570px;">Function from external file</button>
     <script src="script.js"></script>
 
     <br>
     <br>
     <hr>
 
+    <!-- Div Choose Graphic Cards -->
+    <div>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+        <!-- Div Graphic Cards -->
+        <div>
+            <label>Graphic Card</label>
+            <select id="graphicCard" name="search" onchange="chooseCard()">
+                <option value="Choose">Choose</option>
+                <option value="Nvidia">NVIDIA</option>
+                <option value="Amd">AMD</option>
+            </select>
 
-    <form>
+            <br>
+            <br>
 
-        <label>Graphic Card</label>
-        <select id="graphicCard">
-            <option value="nvidia">NVIDIA</option>
-            <option value="amd">AMD</option>
-        </select>
+            <!-- Div GPU Series -->
+            <div id="chooseGPU">
+                <label>GPU series</label>
+                <div style="display: block;">
+                    <select id="gpuSeries">
+                    </select>
+                </div>
 
-        <script>
-            if (id = "nvidia") {
-                document.getElementById("testOption").innerHTML = "Nvidia"
-            }
-        </script>
-        <br>
-        <br>
-        <label>GPU series</label>
-        <select id="nvidiaseries">
-            <option>GTX 750ti</option>
-        </select>
-    </form>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <br>
+
+
+
 
 </body>
 
