@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="GPUscript.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+
+        <!-- Div Graphic Cards -->
+        <div>
+            <label>Select GPU model:</label>
+            <select id="graphicCard" name="search" onchange="chooseCard()">
+                <option value="Choose">Choose</option>
+                <option value="Nvidia">NVIDIA</option>
+                <option value="Amd">AMD</option>
+            </select>
+
+            <br>
+            <br>
+
+            <!-- Div GPU Series -->
+            <div id="chooseGPU">
+                <!-- Div gpu Nvidia -->
+                <div id="gpuNvidia" style="display: none;">
+                    <label>GPU NVIDIA series:</label>
+                    <select id="gpuSeriesNvidia">
+                        <option>Choose GPU series</option>
+                        <option>GeForce RTX 3090</option>
+                        <option>GeForce RTX 3080</option>
+                        <option>GeForce RTX 3070</option>
+                        <option>GeForce RTX 3060 Ti</option>
+                        <option>GeForce RTX 3060</option>
+                        <option>GeForce RTX 2080 Ti</option>
+                        <option>GeForce RTX 2080 Super</option>
+                        <option>GeForce RTX 2080</option>
+                        <option>GeForce RTX 2070 Super</option>
+                        <option>GeForce RTX 2070</option>
+                        <option>GeForce RTX 2060 Super</option>
+                        <option>GeForce RTX 2060</option>
+                        <option>GeForce GTX 1660 Ti</option>
+                        <option>GeForce GTX 1660</option>
+                        <option>GeForce GTX 1650</option>
+                        <option>GeForce GTX 1080 Ti</option>
+                        <option>GeForce GTX 1080</option>
+                        <option>GeForce GTX 1070 Ti</option>
+                        <option>GeForce GTX 1070</option>
+                        <option>GeForce GTX 1060 6GB</option>
+                        <option>GeForce GTX 1060 3GB</option>
+                        <option>GeForce GTX 1050 and Ti</option>
+                        <option>GeForce Titan RTX</option>
+                        <option>GeForce GTX Titan V</option>
+                        <option>GeForce GTX Titan Z</option>
+                        <option>GeForce GTX Titan X Pascal</option>
+                        <option>GeForce GTX Titan X</option>
+                        <option>GeForce GTX Titan Black</option>
+                        <option>GeForce GTX Titan</option>
+                        <option>GeForce GTX 980 Ti</option>
+                        <option>GeForce GTX 980</option>
+                        <option>GeForce GTX 970</option>
+                        <option>GeForce GTX 960</option>
+                        <option>GeForce GTX 950</option>
+                        <option>GeForce GTX 780 Ti</option>
+                        <option>GeForce GTX 780</option>
+                        <option>GeForce GTX 770</option>
+                        <option>GeForce GTX 760</option>
+                        <option>GeForce GTX 750 Ti</option>
+                        <option>GeForce GTX 750</option>
+                    </select>
+
+                </div>
+
+                <!-- div gpu Amd -->
+                <div id="gpuAmd" style="display: none;">
+                    <label>GPU AMD series:</label>
+                    <select id="gpuSeriesAmd">
+                        <option>Choose GPU series</option>
+                        <option>RX 6900 XT</option>
+                        <option>RX 6800 XT</option>
+                        <option>RX 6800</option>
+                        <option>RX 6700 XT</option>
+                        <option>Radeon RX 5700XT</option>
+                        <option>Radeon RX 5700</option>
+                        <option>Radeon RX 5600XT</option>
+                        <option>Radeon RX 5500XT</option>
+                        <option>Radeon VII</option>
+                        <option>Radeon RX 590</option>
+                        <option>Radeon RX 580</option>
+                        <option>Radeon RX 580 XTR</option>
+                        <option>Radeon RX 570</option>
+                        <option>Radeon RX 560</option>
+                        <option>Radeon RX 550</option>
+                        <option>Radeon R9 270</option>
+                        <option>Radeon R9 270X</option>
+                        <option>Radeon R9 280</option>
+                        <option>Radeon R9 280X</option>
+                        <option>Radeon R9 285</option>
+                        <option>Radeon R9 290</option>
+                        <option>Radeon R9 290X</option>
+                        <option>Radeon R9 295X2</option>
+                        <option>Radeon R9 380</option>
+                        <option>Radeon R9 380X</option>
+                        <option>Radeon R9 390</option>
+                        <option>Radeon R9 390X</option>
+                        <option>Radeon R9 Fury</option>
+                        <option>Radeon R9 Fury X</option>
+                        <option>Radeon R9 Nano</option>
+                        <option>Radeon RX 460</option>
+                        <option>Radeon RX 470</option>
+                        <option>Radeon RX 480</option>
+                        <option>Radeon RX Vega 56</option>
+                        <option>Radeon RX Vega 64</option>
+                        <option>Radeon RX Vega 64 Limited Edition</option>
+                        <option>Radeon RX Vega 64 Liquid Cooling</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <!-- Div Manufacturer -->
+            <div id="manufacturer:">
+                <!-- Div Manufacturer Nvidia -->
+                <div id="manufacturerNvidia" style="display: none;">
+                    <select name="gpu_manufacturer_Nvidia" id="manufacturerNvidia">
+                        <option value="">Select Manufacturer</option>
+                        <option>ASUS</option>
+                        <option>Colorful</option>
+                        <option>ELSA</option>
+                        <option>EVGA</option>
+                        <option>Gainward</option>
+                        <option>Galaxy</option>
+                        <option>GIGABYTE</option>
+                        <option>Leadtek</option>
+                        <option>KFA2</option>
+                        <option>MSI</option>
+                        <option>Palit</option>
+                        <option>PNY</option>
+                        <option>ZOTAC
+                        </option>
+                    </select>
+                </div>
+
+                <!-- Div Manufacturer Amd -->
+                <div id="manufacturerAmd" style="display: none;">
+                    <select name="gpu_manufacturer_Amd" id="manufacturerAmd">
+                        <option value="">Select Manufacturer</option>
+                        <option>ASUS</option>
+                        <option>Club3D</option>
+                        <option>GIGABYTE</option>
+                        <option>HIS</option>
+                        <option>MSI</option>
+                        <option>PowerColor</option>
+                        <option>Sapphire</option>
+                        <option>VisionTek</option>
+                        <option>VTX3D</option>
+                        <option>XFX
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
