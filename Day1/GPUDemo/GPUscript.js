@@ -29,7 +29,7 @@ function chooseGPUSeries() {
 
 function chooseModelNvidia() {
     var select = document.getElementById("selectManufacturerNvidia").value;
-    if (select === "Asus") {
+    if (select === "ASUS") {
         $("#videoCardNvidia").css("display", "block");
     } else {
 
@@ -43,4 +43,26 @@ function reChoice() {
     $("#gpuAmd").css("display", "none");
     $("#manufacturerNvidia").css("display", "none");
     $("#manufacturerAmd").css("display", "none");
+}
+
+function openImage() {
+    var select = document.getElementById("gpuModel").value;
+    $("img").attr("width", "250px")
+    if (select === "n750ti1") {
+        $("#gtx750ti1").css("display", "block")
+        $("#gtx750ti2").css("display", "none")
+        $("#gtx750ti3").css("display", "none")
+
+    }
+    else if (select === "n750ti2") {
+        $("#gtx750ti1").css("display", "none")
+        $("#gtx750ti2").css("display", "block")
+        $("#gtx750ti3").css("display", "none")
+
+    }
+    else if (select === "n750ti3") {
+        $("#gtx750ti1").css("display", "none")
+        $("#gtx750ti2").css("display", "none")
+        $("#gtx750ti3").css("display", "block")
+    }
 }

@@ -133,8 +133,8 @@
                 <label>Manufacturer:</label>
                 <select id="selectManufacturerNvidia" onchange="chooseModelNvidia()">
                     <option value="">Select Manufacturer</option>
-                    <option value="Asus">ASUS</option>
-                    <option value="Colorful">Colorful</option>
+                    <option>ASUS</option>
+                    <option>Colorful</option>
                     <option>ELSA</option>
                     <option>EVGA</option>
                     <option>Gainward</option>
@@ -176,12 +176,21 @@
             <!-- div Video card -->
             <div id=videoCardNvidia style="display: none;">
                 <label>Video card:</label>
-                <select name="gpu_model" id="gpuModel">
+                <select name="gpu_model" id="gpuModel" onchange="openImage()">
                     <option value="">Select GPU Model</option>
-                    <option value="n750ti1" >ASUS GTX 750 Ti Single Fan</option>
+                    <option value="n750ti1">ASUS GTX 750 Ti Single Fan</option>
                     <option value="n750ti2">ASUS GTX 750 Ti Double Fan</option>
                     <option value="n750ti3">ASUS STRIX GTX 750 Ti DirectCU II OC</option>
                 </select>
+                <br>
+                <br>
+
+                <img id="gtx750ti1" style="display: none;"
+                    src="https://www.v1tech.com/content/listings/nvidia/geforce-gtx-750-ti/gpu_images/ASUS-GTX-750-Ti-Single-Fan.jpg">
+                <img id="gtx750ti2" style="display: none;"
+                    src="https://www.v1tech.com/content/listings/nvidia/geforce-gtx-750-ti/gpu_images/ASUS-GTX-750-Ti-Double-Fan.jpg">
+                <img id="gtx750ti3" style="display: none;"
+                    src="https://www.v1tech.com/content/listings/nvidia/geforce-gtx-750-ti/gpu_images/ASUS-STRIX-GTX-750-Ti-DirectCU-II-OC.jpg">
             </div>
         </div>
 
