@@ -1,34 +1,28 @@
-const { MongoClient } = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://admin:160898@shop.uzruo.mongodb.net/Shop?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+    const collection = client.db("test").collection("devices");
+    // perform actions on the collection object
+    client.close();
+});
 
-async function main() {
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
-    const uri = "mongodb+srv://shop.uzruo.mongodb.net/Shop";
+
+const express = require("express")
+const app = express()
+const expressLayouts = require("express-ejs-layouts")
+
+const indexRouter = require('./routes/index')
+const authorRouter = require('./routes/sellers')
+
+app.set("view engine", "ejs")
+app.set("views", __dirname + "/views")
+app.set("layout", "layouts/layout")
+app.use(expressLayouts)
+app.use(express.static("public"))
 
 
-    const client = new MongoClient(uri);
+app.use("/", indexRouter)
+app.use("/sellers", authorRouter)
 
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
-
-        // Make the appropriate DB calls
-        await listDatabases(client);
-
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
-}
-
-async function listDatabases(client) {
-    databasesList = await client.db().admin().listDatabases();
-
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
-
-main().catch(console.error);
+app.listen(process.env.PORT || 3000)
