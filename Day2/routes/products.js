@@ -2,10 +2,11 @@ const express = require("express")
 const router = express.Router()
 const multer = require('multer')
 const path = require('path')
+const fs = require('fs')
 const Product = require("../models/product")
-const uploadPath = path.join('public', Product.productImageBasePath)
 const Seller = require("../models/seller")
-const imageMimeTypes = ['images/jpeg', 'images/png', 'images/gif']
+const uploadPath = path.join('public', Product.productImageBasePath)
+const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
 const upload = multer({
     dest: uploadPath,
     fileFilter: (req, file, callback) => {
@@ -16,7 +17,26 @@ const upload = multer({
 
 //All product route
 router.get("/", async (req, res) => {
-    res.send("All products")
+    let query = Product.find()
+    if (req.query.name != null && req.query.name != '') {
+        query = query.regex('name', new RegExp(req.query.name, 'i'))
+    }
+    if (req.query.publishedBefore != null && req.query.publishedBefore != '') {
+        query = query.lte('publishDate', req.query.publishedBefore)
+    }
+    if (req.query.publishedAfter != null && req.query.publishedAfter != '') {
+        query = query.gte('publishDate', req.query.publishedAfter)
+    }
+    try {
+        const products = await query.exec()
+        res.render('products/index', {
+            products: products,
+            searchOptions: req.query
+        })
+    }
+    catch {
+        res.redirect('/')
+    }
 })
 
 
@@ -36,18 +56,28 @@ router.post("/", upload.single('productImage'), async (req, res) => {
         productImage: fileName,
         detail: req.body.detail
     })
+
     try {
         const newProduct = await product.save()
         // res.redirect('sellers/${newProduct.id}')
         res.redirect('products')
     }
     catch {
+        if (product.productImage != null) {
+            removeProductImage(product.productImage)
+        }
         renderNewPage(res, product, true)
     }
 
 })
 
-async function renderNewPage(res, book, hasError = false) {
+function removeProductImage(fileName) {
+    fs.unlink(path.join(uploadPath, fileName), err => {
+        if (err) console.err(err)
+    })
+}
+
+async function renderNewPage(res, product, hasError = false) {
     try {
         const sellers = await Seller.find({})
         const params = {
@@ -61,6 +91,8 @@ async function renderNewPage(res, book, hasError = false) {
         res.redirect('/products')
     }
 }
+
+
 
 
 module.exports = router

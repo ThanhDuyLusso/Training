@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const path = require('path')
 const productImageBasePath = 'uploads/productImage'
 
-const sellerSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -34,5 +35,13 @@ const sellerSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Product', sellerSchema)
+productSchema.virtual('productImagePath').get(function () {
+    if (this.productImage != null) {
+        return path.join('/', productImageBasePath, this.productImage)
+    }
+})
+
+
+
+module.exports = mongoose.model('Product', productSchema)
 module.exports.productImageBasePath = productImageBasePath
